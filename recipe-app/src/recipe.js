@@ -1,13 +1,15 @@
 export function recipeList( {recipes} ) {
     return (
-        recpes.map((recipe, i) => {
-            return <Recipe name={recipe.name}/>
+        recipes.map((recipe, i) => {
+            return <Recipe key={i} name={recipe.name} />
         })
     )
 }
 
-function Recipes( {name} ) {
+function Recipe( {name} ) {
     return (
         <p>{name}</p>
     )
 }
+
+export default Recipe;
