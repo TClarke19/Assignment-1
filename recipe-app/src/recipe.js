@@ -1,4 +1,4 @@
-export function recipeList( {recipes, setRecipes} ) {
+export function RecipeList( {recipes, setRecipes} ) {
     return (
         recipes.map((recipe, i) => {
             return <Recipe key={i} recipe={recipe} setRecipes={setRecipes}/>
@@ -6,7 +6,7 @@ export function recipeList( {recipes, setRecipes} ) {
     )
 }
 
-function Recipe( {recipe, setRecipes} ) {
+function Recipe( {recipe, recipes, setRecipes} ) {
     return (
         <div>
             <h2>{recipe.name}</h2>
@@ -15,13 +15,13 @@ function Recipe( {recipe, setRecipes} ) {
             <p><strong>Directions:</strong> {recipe.directs}</p>
             <p><strong>Description:</strong> {recipe.desc}</p>
             <button onClick={ () => {
-                // let adjustedRecipe = [];
-                // for( let i=0; i<recipes.length; i++ ) {
-                //     if( recipe[i].name != name ) {
-                //         adjustedRecipe.push(recipes[i]);
-                //     }
-                //     setRecipes(adjustedRecipe);
-                // }
+                let adjustedRecipe = [];
+                for( let i=0; i<recipes.length; i++ ) {
+                    if( recipes[i].name != recipe.name ) {
+                        adjustedRecipe.push(recipes[i]);
+                    }
+                }
+                setRecipes(adjustedRecipe);
             }}>Remove</button>
         </div>
     )

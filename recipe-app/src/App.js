@@ -1,6 +1,5 @@
-
 import './App.css';
-import { BrowserRouter as Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import HomePage from './Home';
 import NavBar from './NavBar';
@@ -9,16 +8,19 @@ import NotFoundPage from './NotFoundPage';
 
 function App() {
 
-  const [recipes, setRecipes] = useState(null);
-
   useEffect( () => {
     fetch("./recipes.json")
     .then( response => response.json())
     .then( setRecipes )
     .catch( e => console.log(e.message))
   }, [] )
+  
 
-  if (recipes == null) return <div>Loading..</div>;
+  const [recipes, setRecipes] = useState([]);
+
+  const addRecipe = (newRecipe) => {
+    setRecipes([...recipes, newRecipe]);
+  };
 
   return (
     <BrowserRouter>
@@ -26,8 +28,8 @@ function App() {
         <NavBar />
         <div id="page-body">
           <Routes>
-            <Route path="/" element={ <HomePage /> } />
-            <Route path="/form" element={ <FormPage /> } />
+            <Route path="/" element={ <HomePage recipes={recipes} /> } />
+            <Route path="/form" element={ <FormPage addRecipe={addRecipe} /> } />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>

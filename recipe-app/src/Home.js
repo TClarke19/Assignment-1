@@ -1,9 +1,15 @@
-import Recipe from './recipe';
+//import { useState, useEffect } from 'react';
+import Recipe from './Recipe';
 
-const HomePage = () => {
+const HomePage = ( {recipes, setRecipes} ) => {
+       
+//const [recipes, setRecipes] = useState(null);
+
+if (recipes == null) return <div>Loading..</div>;
+
     return (
         <header className="App-header">
-          {Recipe.map((recipe, index) => <Recipe key={index} recipe={recipe} />)} 
+          {recipes.map((recipe, index) => <Recipe key={index} {...{recipe, recipes, setRecipes}} />)} 
         </header>
     );
 }
