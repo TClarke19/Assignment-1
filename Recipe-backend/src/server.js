@@ -1,4 +1,6 @@
 import express from 'express';
+import path from 'path';
+import { RecipeList } from '../../recipe-app/src/Recipe';
 
 const app = express();
 app.use(express.json());
@@ -10,8 +12,13 @@ app.get('/api/home', async (req, res) => {
     res.send(`Test Response. ${req.body.name}`);
 });
 
-app.get('/api/form', (req, res) => {
-    res.send(``)
+app.post('/api/form', (req, res) => {
+    const { name: recipeName } = req.params;
+    const recipe = RecipeList.find(a => a.name === recipeName);
+
+    if (!recipe) {
+        res.send(`${recipeName} does not exist`)
+    } 
 });
 
 app.listen(8000, () => {

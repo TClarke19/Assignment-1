@@ -9,8 +9,20 @@ const FormPage = ({ addRecipe }) => {
   
     const submit = (e) => {
       e.preventDefault();
-      addRecipe(newRecipe);
-      setNewRecipe({ name: '', img: '', ingdts: '', directs: '', desc: '' });
+      fetch('http://localhost:8000/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newRecipe),
+      })
+      .then(response => response.json())
+      .then(data => {
+        addRecipe(data);
+        setNewRecipe({ name: '', img: '', ingdts: '', directs: '', desc: '' });
+      })
+      // addRecipe(newRecipe);
+      // setNewRecipe({ name: '', img: '', ingdts: '', directs: '', desc: '' });
     };
   
     return (
