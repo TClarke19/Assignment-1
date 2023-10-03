@@ -5,15 +5,15 @@ import HomePage from './Home';
 import NavBar from './NavBar';
 import FormPage from './FormPage';
 import NotFoundPage from './NotFoundPage';
+import axios from 'axios';
 
 function App() {
 
-  useEffect( () => {
-    fetch("./recipes.json")
-    .then( response => response.json())
-    .then( setRecipes )
-    .catch( e => console.log(e.message))
-  }, [] )
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/Recipes/')
+      .then(response => setRecipes(response.data))
+      .catch(err => console.log(err));
+  }, []);
   
 
   const [recipes, setRecipes] = useState([]);
