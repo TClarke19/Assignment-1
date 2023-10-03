@@ -13,14 +13,14 @@ app.post('/api/home', (req, res) => {
 
     fs.readFile(path.join(__dirname, '../recipe-app/public/recipes.json'), 'utf8', (err, data) => {
         if (err) {
-            console.log('Error reading file');
+            console.log(`Error reading file ${err}`);
         } else {
             const recipes = JSON.parse(data);
             recipes.push(newRecipe);
 
             fs.writeFile(path.join(__dirname, 'recipe-app/public/recipes.json'), JSON.stringify(recipes, null, 4), (err) => {
                 if (err) {
-                    console.log('Error writing file')
+                    console.log(`Error writing file ${err}`)
                 }
             });
         }
