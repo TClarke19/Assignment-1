@@ -9,7 +9,7 @@ const FormPage = ({ addRecipe }) => {
   
     const submit = (e) => {
       e.preventDefault();
-      fetch('http://localhost:8000/api/form', {
+      fetch('http://127.0.0.1:27017/api/form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
