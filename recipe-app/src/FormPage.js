@@ -21,6 +21,9 @@ const FormPage = ({ addRecipe }) => {
         addRecipe(data);
         setNewRecipe({ name: '', img: '', ingdts: '', directs: '', desc: '' });
       })
+      .catch((error) => {
+        console.log('Error', error);
+      });
       // addRecipe(newRecipe);
       // setNewRecipe({ name: '', img: '', ingdts: '', directs: '', desc: '' });
     };
