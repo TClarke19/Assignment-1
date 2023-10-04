@@ -1,0 +1,25 @@
+[
+    {
+        "name": "lasagna",
+        "img": "images/lasagna.jpeg",
+        "ingdts": "pasta, sauce, meat, cheese",
+        "directs": "Prepare in oven and bake in dish for 45 mins at 350 degC",
+        "desc": "A pasta dish with sauce, meat, cheese, and other ingredients."
+    },
+
+    {
+    "name": "cheese burger",
+    "img": "images/cheeseburger.jpeg",
+    "ingdts": "bun, beef patty, cheese, lettuce, tomato, onion, pickles",
+    "directs": "Grill the beef patty until cooked to desired level. Place cheese on patty to melt. Assemble the burger with the remaining ingredients.",
+    "desc": "A juicy beef patty topped with melted cheese and served on a bun with various toppings."
+    },
+    
+    {
+    "name": "mac and cheese",
+    "img": "images/macandcheese.jpeg",
+    "ingdts": "macaroni pasta, cheddar cheese, milk, butter, flour",
+    "directs": "Cook pasta. Make a roux with butter and flour, add milk and cheese to create a sauce. Mix in cooked pasta.",
+    "desc": "A creamy and cheesy pasta dish made with macaroni and a rich cheddar cheese sauce."
+    }
+]

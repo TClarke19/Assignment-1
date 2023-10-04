@@ -1,7 +1,14 @@
+import Button from 'react-bootstrap/Button';
+
 export function RecipeList( {recipes, setRecipes} ) {
     return (
         recipes.map((recipe, i) => {
-            return <Recipe key={i} recipe={recipe} setRecipes={setRecipes}/>
+            return <Recipe 
+                        key={i} 
+                        recipe={recipe} 
+                        recipes = {recipes}
+                        setRecipes={setRecipes}
+                    />
         })
     )
 }
@@ -14,28 +21,24 @@ function Recipe( {recipe, recipes, setRecipes} ) {
             <p><strong>Ingredients:</strong> {recipe.ingdts}</p>
             <p><strong>Directions:</strong> {recipe.directs}</p>
             <p><strong>Description:</strong> {recipe.desc}</p>
-            <button onClick={async () => {
-                // make api call to backend to remove the current recipe
-                //if the call is successful, need to update the use state hook ( setRecipes )
-                const response = await fetch('http://127.0.0.1:27017', {
+            <Button variant='danger' onClick={async (event) => {
+                event.stopPropagation();
+                const response = await fetch('/api/removeRecipe', {
                     method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name: recipe.name }),
                 });
             
                 if (response) {
                     let adjustedRecipe = [];
-                    for( let i=0; i<recipes.length; i++ ) {
+                    for( let i = 0; i < recipes.length; i++ ) {
                         if( recipes[i].name != recipe.name ) {
                             adjustedRecipe.push(recipes[i]);
                         }
                     }
-                // let adjustedRecipe = [];
-                // for( let i=0; i<recipes.length; i++ ) {
-                //     if( recipes[i].name != recipe.name ) {
-                //         adjustedRecipe.push(recipes[i]);
-                //     }
+                    setRecipes(adjustedRecipe);
                 }
-                setRecipes(adjustedRecipe);
-            }}>Remove</button>
+            }}>Remove</Button>
         </div>
     )
 }

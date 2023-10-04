@@ -8,15 +8,13 @@ import NotFoundPage from './NotFoundPage';
 import axios from 'axios';
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:8000/api/Recipes/')
       .then(response => setRecipes(response.data))
       .catch(err => console.log(err));
   }, []);
-  
-
-  const [recipes, setRecipes] = useState([]);
 
   const addRecipe = (newRecipe) => {
     setRecipes([...recipes, newRecipe]);
