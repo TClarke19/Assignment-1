@@ -1,5 +1,5 @@
 //import { useState, useEffect } from 'react';
-import Recipe from './Recipe';
+import Recipe from './recipe';
 
 const HomePage = ( {recipes, setRecipes} ) => {
 //const [recipes, setRecipes] = useState(null);

@@ -3,10 +3,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { MongoClient } from 'mongodb';
 import 'dotenv/config';
+import multer from 'multer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const multer = require('multer');
+//const multer = require('multer');
 const app = express();
 const PORT = 8000;
 
